@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Medicamentos</title>
+</head>
+<body>
+    <h1>Listagem de Medicamentos</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome do Medicamento</th>
+                <th>Descrição</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicamento in medicamentos %}
+            <tr>
+                <td>{{ medicamento.nome }}</td>
+                <td>{{ medicamento.descricao }}</td>
+                <td>{{ medicamento.get_tipo_display }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

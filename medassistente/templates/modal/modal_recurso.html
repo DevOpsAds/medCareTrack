@@ -1,0 +1,27 @@
+{% load static %}
+<!-- Inclua o arquivo para controle do modal -->
+
+
+<!-- Conteúdo do modal -->
+<div id="myModal_recurso" class="modal">
+    <!-- Conteúdo do modal -->
+    <div class="modal-content">
+        <!-- Botão para fechar o modal -->
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <!-- Conteúdo do modal -->
+        <h2>Formulário de Cadastro de Recursos</h2>
+    
+        <form method="post">
+            {% csrf_token %}
+            {{ form_contato }}
+            <button type="submit">Enviar</button>
+        </form>
+        
+    </div>
+</div>
+<script src="{% static 'js/forms_modal/modal_recurso.js' %}"></script>
+<!-- Script para fechar o modal ao clicar fora dele -->
+<!-- Script para fechar o modal ao clicar fora dele -->
+<script>
+    window.onclick = fecharModalFora;
+</script>

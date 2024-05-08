@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+</head>
+<body>
+    <h1>Perfil do Usuário</h1>
+
+    <p>Email: {{ user.email }}</p>
+    <p>Nome: {{ user.first_name }} {{ user.last_name }}</p>
+
+
+
+    <!-- Seção para exibir informações do estoque -->
+    {% include '/home/judite/Projetos/alacl/django_monitor_medical/MediCareTrack/farmacia/templates/lista.html' %}
+    <!-- Botão para mostrar/ocultar a seção -->
+    <button onclick="toggleDetails()">Mostrar Detalhes</button>
+
+    <!-- Seção para exibir informações do lista -->
+    <div id="details" style="display: none;">
+        {% include '/home/judite/Projetos/alacl/django_monitor_medical/MediCareTrack/farmacia/templates/lista_detalhes.html' %}
+    </div>
+
+    <script>
+        function toggleDetails() {
+            var detailsSection = document.getElementById('details');
+            if (detailsSection.style.display === 'none') {
+                detailsSection.style.display = 'block';
+            } else {
+                detailsSection.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

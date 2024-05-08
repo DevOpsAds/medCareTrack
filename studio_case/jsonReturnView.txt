@@ -1,0 +1,18 @@
+def detalhe_medicamento(request, medicamento_id):
+    try:
+        medicamento_extendido = MedicamentoExtendido.objects.get(medicamento=medicamento_id)
+        print(medicamento_extendido)
+
+        data = {
+            'medicamento_id': medicamento_extendido.pk,
+            'nome_fabricante': medicamento_extendido.nome_fabricante,
+            'serventia': medicamento_extendido.serventia,
+            'formulacao_basica': medicamento_extendido.formulacao_basica,
+            'data_validade': medicamento_extendido.data_validade.strftime('%Y-%m-%d'),  # Convertendo a data para string
+            'estado': medicamento_extendido.get_estado_display(),  # Obtendo o valor legível da escolha
+            'categoria': medicamento_extendido.categoria,
+            'forma_farmaceutica': medicamento_extendido.forma_farmaceutica
+        }
+        return JsonResponse(data)
+    except MedicamentoExtendido.DoesNotExist:
+        return JsonResponse({'error': 'Medicamento não encontrado'}, status=404)

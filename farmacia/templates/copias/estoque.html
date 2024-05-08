@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque Atual</title>
+</head>
+<body>
+    <h1>Estoque Atual - Data: <span id="currentDate"></span></h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome do Medicamento</th>
+                <th>Descrição</th>
+                <th>Tipo</th>
+                <th>Quantidade Atual</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Os dados do estoque devem ser preenchidos aqui -->
+            <tr>
+                <td>Medicamento 1</td>
+                <td>Descrição do medicamento 1</td>
+                <td>Líquido</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>Medicamento 2</td>
+                <td>Descrição do medicamento 2</td>
+                <td>Comprimido</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Medicamento 3</td>
+                <td>Descrição do medicamento 3</td>
+                <td>Adesivo</td>
+                <td>75</td>
+            </tr>
+            <tr>
+                <td>Medicamento 4</td>
+                <td>Descrição do medicamento 4</td>
+                <td>Injetável</td>
+                <td>30</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // JavaScript para exibir a data atual
+        var currentDateElement = document.getElementById("currentDate");
+        var currentDate = new Date();
+        var formattedDate = currentDate.toLocaleDateString("pt-BR");
+        currentDateElement.innerText = formattedDate;
+    </script>
+</body>
+</html>

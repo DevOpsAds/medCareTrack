@@ -1,0 +1,66 @@
+{% include '/home/judite/Projetos/alacl/django_monitor_medical/MediCareTrack/farmacia/templates/modal_estoque.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Medicamento</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalhes do Medicamento</h1>
+    <table>
+        <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td>Medicamento ID</td>
+            <td>{{ medicamento.medicamento_id }}</td>
+        </tr>
+        <tr>
+            <td>Nome Fabricante</td>
+            <td>{{ medicamento.nome_fabricante }}</td>
+        </tr>
+        <tr>
+            <td>Serventia</td>
+            <td>{{ medicamento.serventia }}</td>
+        </tr>
+        <tr>
+            <td>Formulação Básica</td>
+            <td>{{ medicamento.formulacao_basica }}</td>
+        </tr>
+        <tr>
+            <td>Data de Validade</td>
+            <td>{{ medicamento.data_validade }}</td>
+        </tr>
+        <tr>
+            <td>Estado</td>
+            <td>{{ medicamento.get_estado_display }}</td>
+        </tr>
+        <tr>
+            <td>Categoria</td>
+            <td>{{ medicamento.categoria }}</td>
+        </tr>
+        <tr>
+            <td>Forma Farmacêutica</td>
+            <td>{{ medicamento.forma_farmaceutica }}</td>
+        </tr>
+    </table>
+    <button id="myBtn">Ver Estoque</button>
+</body>
+</html>

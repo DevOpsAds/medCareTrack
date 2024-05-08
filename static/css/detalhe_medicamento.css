@@ -1,0 +1,46 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2;
+}
+/* Estilo para o modal */
+#myModal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed; /* Faz com que o modal fique posicionado fixamente na tela */
+    z-index: 1; /* Define a ordem de empilhamento do modal */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    overflow: auto; /* Adiciona uma barra de rolagem se o conteúdo do modal for maior que a janela do navegador */
+    background-color: rgba(0,0,0,0.4); /* Fundo preto com opacidade */
+    padding-top: 60px; /* Espaçamento acima do modal */
+}
+/* Conteúdo do modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* Centraliza o modal na tela */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largura do modal */
+}
+/* Estilo para o botão de fechar o modal */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

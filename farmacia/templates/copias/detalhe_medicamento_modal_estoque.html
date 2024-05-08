@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Medicamento</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        /* Estilo para o modal */
+        #myModal {
+            display: none; /* Oculta o modal por padrão */
+            position: fixed; /* Faz com que o modal fique posicionado fixamente na tela */
+            z-index: 1; /* Define a ordem de empilhamento do modal */
+            left: 0;
+            top: 0;
+            width: 100%; /* Largura total */
+            height: 100%; /* Altura total */
+            overflow: auto; /* Adiciona uma barra de rolagem se o conteúdo do modal for maior que a janela do navegador */
+            background-color: rgba(0,0,0,0.4); /* Fundo preto com opacidade */
+            padding-top: 60px; /* Espaçamento acima do modal */
+        }
+        /* Conteúdo do modal */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* Centraliza o modal na tela */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Largura do modal */
+        }
+        /* Estilo para o botão de fechar o modal */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalhes do Medicamento</h1>
+    <table>
+        <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td>Medicamento ID</td>
+            <td>{{ medicamento.medicamento_id }}</td>
+        </tr>
+        <tr>
+            <td>Nome Fabricante</td>
+            <td>{{ medicamento.nome_fabricante }}</td>
+        </tr>
+        <tr>
+            <td>Serventia</td>
+            <td>{{ medicamento.serventia }}</td>
+        </tr>
+        <tr>
+            <td>Formulação Básica</td>
+            <td>{{ medicamento.formulacao_basica }}</td>
+        </tr>
+        <tr>
+            <td>Data de Validade</td>
+            <td>{{ medicamento.data_validade }}</td>
+        </tr>
+        <tr>
+            <td>Estado</td>
+            <td>{{ medicamento.get_estado_display }}</td>
+        </tr>
+        <tr>
+            <td>Categoria</td>
+            <td>{{ medicamento.categoria }}</td>
+        </tr>
+        <tr>
+            <td>Forma Farmacêutica</td>
+            <td>{{ medicamento.forma_farmaceutica }}</td>
+        </tr>
+    </table>
+    <!-- Botão para abrir o modal -->
+    <button id="myBtn">Ver Estoque</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <!-- Conteúdo do modal -->
+        <div class="modal-content">
+            <!-- Botão para fechar o modal -->
+            <span class="close">&times;</span>
+            <!-- Conteúdo do modal -->
+            <h2>Estoque do Produto</h2>
+            <h2>----------------------------</h2>
+            <p><strong>Medicamento:</strong> {{ medicamento.medicamento.nome }}</p>
+            <p><strong>Quantidade em Estoque:</strong> {{ estoque }}</p>
+            <!-- Adicione outros campos relevantes do estoque aqui -->
+        </div>
+    </div>
+
+    <!-- Script para controlar o modal -->
+    <script>
+        // Obtém o modal
+        var modal = document.getElementById("myModal");
+
+        // Obtém o botão que abre o modal
+        var btn = document.getElementById("myBtn");
+
+        // Obtém o elemento <span> que fecha o modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Quando o usuário clica no botão, abre o modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Quando o usuário clica no <span> (x), fecha o modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Quando o usuário clica fora do modal, ele fecha
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

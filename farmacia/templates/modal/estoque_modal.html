@@ -1,0 +1,24 @@
+{% load static %}
+
+<!-- Inclua o arquivo para controle do modal -->
+<script src="{% static 'js/modal.js' %}"></script>
+
+<!-- Conteúdo do modal -->
+<div id="myModal" class="modal">
+    <!-- Conteúdo do modal -->
+    <div class="modal-content">
+        <!-- Botão para fechar o modal -->
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <!-- Conteúdo do modal -->
+        <h2>Estoque do Produto</h2>
+        <h2>----------------------------</h2>
+        <p><strong>Medicamento:</strong> {{ medicamento.medicamento.nome }}</p>
+        <p><strong>Quantidade em Estoque:</strong> {{ estoque }}</p>
+        <!-- Adicione outros campos relevantes do estoque aqui -->
+    </div>
+</div>
+
+<!-- Script para fechar o modal ao clicar fora dele -->
+<script>
+    window.onclick = fecharModalFora;
+</script>

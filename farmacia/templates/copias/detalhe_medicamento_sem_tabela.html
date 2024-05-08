@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Medicamento</title>
+</head>
+<body>
+    <h1>Detalhes do Medicamento</h1>
+    <p>Nome Fabricante: {{ medicamento.nome_fabricante }}</p>
+    <p>Serventia: {{ medicamento.serventia }}</p>
+    <p>Formulação Básica: {{ medicamento.formulacao_basica }}</p>
+    <p>Data de Validade: {{ medicamento.data_validade }}</p>
+    <p>Estado: {{ medicamento.get_estado_display }}</p>
+    <p>Categoria: {{ medicamento.categoria }}</p>
+    <p>Forma Farmacêutica: {{ medicamento.forma_farmaceutica }}</p>
+    <button id="myBtn">Ver Estoque</button>
+
+</body>
+</html>
