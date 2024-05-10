@@ -1,37 +1,74 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/profiles_styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+ <!-- Script para controlar eventos dos componentes -->
+
+
 </head>
 <body>
     <h1>Perfil do Usuário</h1>
 
+    <!-- Exibir informações do usuário -->
+    
     <p>Email: {{ user.email }}</p>
-    <p>Nome: {{ user.first_name }} {{ user.last_name }}</p>
+    <p>Nome: {{ user.username }}</p>
 
 
+    <!-- Botão para abrir o modal -->
+    <button id="btn_cadastro_acesso_comum" ">Cadastrar equipe</button>
 
     <!-- Seção para exibir informações do estoque -->
-    {% include '/home/judite/Projetos/alacl/django_monitor_medical/MediCareTrack/farmacia/templates/lista.html' %}
-    <!-- Botão para mostrar/ocultar a seção -->
-    <button onclick="toggleDetails()">Mostrar Detalhes</button>
-
-    <!-- Seção para exibir informações do lista -->
     <div id="details" style="display: none;">
-        {% include '/home/judite/Projetos/alacl/django_monitor_medical/MediCareTrack/farmacia/templates/lista_detalhes.html' %}
+        Incluir lista de medicamentos
     </div>
 
-    <script>
-        function toggleDetails() {
-            var detailsSection = document.getElementById('details');
-            if (detailsSection.style.display === 'none') {
-                detailsSection.style.display = 'block';
-            } else {
-                detailsSection.style.display = 'none';
-            }
-        }
-    </script>
+    <!-- Modal para cadastro de acesso comum -->
+        <!-- cadastro do contato do cuidador.html -->
+        {% include 'modal/modal_acesso_userVinculado.html' %}
+        <script src="{% static 'js/forms_modal/user_vinculados_cadastro/modal_acesso_comum.js' %}"></script>
+<!-- Script para fechar o modal ao clicar fora dele -->
 </body>
 </html>
+
+
+<!-- Script para fechar o modal ao clicar fora dele -->
+<script>
+    window.onclick = fecharModalFora;
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+// Adicione um ouvinte de evento para todos os botões de fechar modal
+var closeModalBtns = document.querySelectorAll(".close");
+
+// Defina a função para fechar o modal
+function fecharModal(event) {
+    // Obtém o modal pai do botão clicado
+    var modal = event.target.closest(".modal");
+
+    // Fecha o modal se encontrado
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Adicione um ouvinte de evento para cada botão de fechar modal
+closeModalBtns.forEach(function(btn) {
+    btn.addEventListener('click', fecharModal);
+});
+});
+
+
+document.getElementById('btn_cadastro_acesso_comum').addEventListener('click', function() {
+
+var modal = document.getElementById("myModal_acesso_comum");
+modal.style.display = "block";
+});
+</script>

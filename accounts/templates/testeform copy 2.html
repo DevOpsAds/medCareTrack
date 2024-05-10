@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Test Form</title>
+</head>
+<body>
+    <h1>Test Form</h1>
+    <form id="myForm" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+        {% for field in form %}
+        {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+            <br>
+        {% endfor %}
+    </div>
+        <button type="submit">Salvar</button>
+    </form>
+    
+    <div id="error-messages"></div> <!-- Div para exibir mensagens de erro -->
+    
+    
+</body>
+</html>

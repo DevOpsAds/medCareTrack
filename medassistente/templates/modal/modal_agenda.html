@@ -14,13 +14,10 @@
         <form method="post">
             {% csrf_token %}
             {{ form_agenda }}
+            <p id="pAgenda"></p>
             <button type="submit">Enviar</button>
         </form>
         
     </div>
 </div>
 
-<!-- Script para fechar o modal ao clicar fora dele -->
-<script>
-    window.onclick = fecharModalFora;
-</script>

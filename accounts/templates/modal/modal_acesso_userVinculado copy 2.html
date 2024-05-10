@@ -1,0 +1,30 @@
+{% load static %}
+<!-- Inclua o arquivo para controle do modal -->
+
+<!-- Conteúdo do modal -->
+<div id="myModal_acesso_comum" class="modal">
+    <!-- Conteúdo do modal -->
+    <div class="modal-content">
+        <!-- Botão para fechar o modal -->
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <!-- Conteúdo do modal -->
+        <h2>Cadastrar Acesso de Equipe *d**..</h2>
+        <p>ID do Usuário: {{ user_id }}</p>
+        <!-- Formulário -->
+        <form id="myForm" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <!-- Renderize os campos do formulário -->
+                {% for field in form %}
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                    <br>
+                {% endfor %}
+            </div>
+            <button type="submit">Salvar</button>
+        </form>
+        
+    </div>
+</div>
+<script src="{% static 'js/forms_modal/user_vinculados_cadastro/modal_acesso_comum.js' %}"></script>
+

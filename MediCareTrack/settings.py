@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'captcha',
     'accounts',
     'farmacia',
-    'medassistente'
+    'medassistente',
+    'monitore',
     
 ]
 
