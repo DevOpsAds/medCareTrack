@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'farmacia',
     'medassistente',
     'monitore',
+    'afericao',
+    'nutricao',
     
 ]
 

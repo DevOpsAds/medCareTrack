@@ -21,4 +21,4 @@ class RecursoDisponivelAdmin(admin.ModelAdmin):
 
 @admin.register(UsuarioCuidador)
 class UsuarioCuidadorAdmin(admin.ModelAdmin):
-    list_display = ['usuario', 'cuidador']
+    list_display = ['user', 'cuidador']

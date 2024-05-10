@@ -1,16 +1,13 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+
 from django.db import models
+from accounts.models import UsuarioVinculado
 
-class Cuidador(models.Model):
-    nome = models.CharField(max_length=100)
-    idade = models.PositiveIntegerField()
-    contatos = models.ManyToManyField('OpcoesContato')
-    agenda_disponibilidade = models.ManyToManyField('AgendaDisponivel', related_name='cuidadores')
 
-    def __str__(self):
-        return self.nome
 
 class OpcoesContato(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    cuidador = models.ForeignKey(UsuarioVinculado, on_delete=models.CASCADE, null=True, blank=True)
     TIPO_CONTATO_CHOICES = [
         ('Telefone', 'Telefone'),
         ('Rede_Social', 'Rede Social'),
@@ -24,6 +21,8 @@ class OpcoesContato(models.Model):
         return f"{self.tipo}: {self.numero_identificador}"
 
 class AgendaDisponivel(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    cuidador = models.ForeignKey(UsuarioVinculado, on_delete=models.CASCADE, null=True, blank=True)
     data_inicio = models.DateTimeField()
     data_fim = models.DateTimeField()
 
@@ -31,6 +30,7 @@ class AgendaDisponivel(models.Model):
         return f"{self.data_inicio} - {self.data_fim}"
 
 class RecursoDisponivel(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     TIPO_RECURSO_CHOICES = [
         ('Financeiro', 'Financeiro'),
         ('Locomoção', 'Locomoção'),
@@ -43,9 +43,22 @@ class RecursoDisponivel(models.Model):
 
     def __str__(self):
         return f"{self.nome} - {self.tipo}"
+    
+
+class Cuidador(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    nome = models.ForeignKey(UsuarioVinculado, on_delete=models.CASCADE)
+    idade = models.PositiveIntegerField()
+    contatos = models.ManyToManyField(OpcoesContato, related_name='opcoes_contato')
+    agenda_disponibilidade = models.ManyToManyField(AgendaDisponivel, related_name='cuidadores')
+
+    def __str__(self):
+        return self.nome.nome.nome  # Obtendo o nome do usuário vinculado
+
+
 
 class UsuarioCuidador(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     cuidador = models.ForeignKey(Cuidador, on_delete=models.CASCADE)
     senha = models.CharField(max_length=128)  # Campo para armazenar a senha
 

@@ -1,12 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.contrib.auth.hashers import make_password, check_password
 import re
 
-
+# usuario_principal_id = models.ForeignKey(User, on_delete=models.CASCADE)
 class UsuarioVinculado(models.Model):
-    usuario_principal_id = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    usuario_principal_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
     nome = models.CharField(max_length=100)
     email = models.EmailField()
     senha = models.CharField(max_length=128)  # Campo para receber a senha em texto puro

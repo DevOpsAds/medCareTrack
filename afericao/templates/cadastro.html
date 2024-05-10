@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de cadastro de cuidador</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cadastro_styles.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1>Formulário de cadastro de disponibilidade</h1>
+    <button id="btn_recursos">Recursos</button>
+    <button id="btn_acesso">Acesso</button>
+    <form method="post">
+        {% csrf_token %}
+        {{ form_cadastro }}
+        <button type="submit">Enviar</button>
+    </form>
+
+
+    <!-- Modal -->
+    <!-- cadastro do contato do cuidador.html -->
+    {% include 'modal/modal_contato.html' %}
+    <!-- cadastro do contato do cuidador.html -->
+    {% include 'modal/modal_agenda.html' %}
+    <!-- cadastro do contato do cuidador.html -->
+    {% include 'modal/modal_recurso.html' %}
+    <!-- cadastro do contato do cuidador.html -->
+    {% include 'modal/modal_acesso.html' %}
+    
+
+
+   
+
+
+    <!-- Script para controlar eventos dos componentes -->
+    <script src="{% static 'js/forms_modal/med_assistente_cadastro/modal_contato.js' %}"></script>
+  
+    <script src="{% static 'js/forms_modal/med_assistente_cadastro/modal_agenda.js' %}"></script>
+
+    <script src="{% static 'js/forms_modal/med_assistente_cadastro/modal_recurso.js' %}"></script>
+
+    <script src="{% static 'js/forms_modal/med_assistente_cadastro/modal_acesso.js' %}"></script>
+
+    
+
+
+</body>
+</html>
+<!-- Script para fechar o modal ao clicar fora dele -->
+<script>
+    window.onclick = fecharModalFora;
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+// Adicione um ouvinte de evento para todos os botões de fechar modal
+var closeModalBtns = document.querySelectorAll(".close");
+
+// Defina a função para fechar o modal
+function fecharModal(event) {
+    // Obtém o modal pai do botão clicado
+    var modal = event.target.closest(".modal");
+
+    // Fecha o modal se encontrado
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Adicione um ouvinte de evento para cada botão de fechar modal
+closeModalBtns.forEach(function(btn) {
+    btn.addEventListener('click', fecharModal);
+});
+});
+</script>

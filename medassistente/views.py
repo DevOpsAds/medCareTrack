@@ -10,7 +10,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 
-from .forms import CuidadorForm,OpcoesContatoForm, AgendaDisponivelForm,RecursoDisponivelForm,UsuarioCuidadorForm
+from .forms import CuidadorForm,OpcoesContatoForm, AgendaDisponivelForm,RecursoDisponivelForm,CuidadorForm
 
 
 from django.contrib.auth import views as auth_views
@@ -80,7 +80,7 @@ def cadastro(request):
         form_cadastro = CuidadorForm(request.POST)
         form_agenda = AgendaDisponivelForm(request.POST)
         form_recurso = RecursoDisponivelForm(request.POST)
-        form_acesso = UsuarioCuidadorForm(request.POST)
+        form_acesso = CuidadorForm(request.POST)
 
         # Verificar se os formulários são válidos individualmente
         form_contato_valid = form_contato.is_valid()
@@ -107,7 +107,7 @@ def cadastro(request):
         form_cadastro = CuidadorForm()
         form_agenda = AgendaDisponivelForm()
         form_recurso = RecursoDisponivelForm()
-        form_acesso = UsuarioCuidadorForm()
+        form_acesso = CuidadorForm()
     return render(request, 'cadastro.html', {'form_contato': form_contato, 'form_cadastro': form_cadastro, 'form_agenda': form_agenda, 'form_recurso': form_recurso, 'form_acesso': form_acesso})
 
 #**-------------
